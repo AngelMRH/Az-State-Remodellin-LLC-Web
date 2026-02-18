@@ -1,0 +1,1764 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Az State Remodeling LLC</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+   <script src="js/resenas.js"></script>
+  <style>
+    /* BANNER DE REMODELACIÓN - COLOR ROJO */
+    .remodeling-banner {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: linear-gradient(135deg, #dc2626, #b91c1c);
+      color: white;
+      text-align: center;
+      padding: 15px 0;
+      font-size: 1.1rem;
+      font-weight: 600;
+      z-index: 9999;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      animation: pulse 2s infinite;
+    }
+    
+    .remodeling-banner i {
+      margin-right: 10px;
+      animation: hammer 1.5s infinite;
+    }
+    
+    @keyframes pulse {
+      0% { opacity: 0.9; }
+      50% { opacity: 1; }
+      100% { opacity: 0.9; }
+    }
+    
+    @keyframes hammer {
+      0% { transform: rotate(0deg); }
+      25% { transform: rotate(-15deg); }
+      50% { transform: rotate(0deg); }
+      75% { transform: rotate(15deg); }
+      100% { transform: rotate(0deg); }
+    }
+    
+    /* Ajustar el header para el banner */
+    .header {
+      margin-top: 60px;
+    }
+    
+    @media (max-width: 768px) {
+      .logo-absolute {
+        top: 10px;
+        left: 10px;
+        z-index: 10;
+      }
+      .logo-absolute img {
+        height: 50px;
+        width: auto;
+      }
+      .logo-text h1 {
+        font-size: 20px;
+      }
+      .logo-text p {
+        font-size: 11px;
+      }
+      .logo-text {
+        margin-left: 90px;
+      }
+      .nav ul {
+        padding-top: 90px;
+      }
+      .menu-toggle {
+        z-index: 1001;
+      }
+      
+      /* Estilos móviles para video */
+      .video-section h1 {
+        font-size: 1.5rem;
+        margin: 20px 0 15px;
+      }
+      
+      #mivideo {
+        max-width: 100%;
+        border-radius: 6px;
+      }
+      
+      .remodeling-banner {
+        font-size: 0.9rem;
+        padding: 12px 0;
+      }
+    }
+    
+    /* Estilos para el video */
+    .video-section h1 {
+      font-size: 2rem;
+      text-align: center;
+      margin: 30px 0 20px;
+      color: #333;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 700;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+    }
+    
+    .video-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto;
+      max-width: 100%;
+      padding: 0 15px;
+    }
+    
+    #mivideo {
+      width: 100%;
+      max-width: 400px; /* Tamaño reducido a 400px */
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    
+    /* Estilos para la nueva organización de servicios */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin-top: 40px;
+    }
+    
+    .service-card {
+      background: white;
+      border-radius: 12px;
+      padding: 25px 20px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      border: 1px solid #f0f0f0;
+      text-align: center;
+    }
+    
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+    }
+    
+    .service-icon {
+      font-size: 2.2rem;
+      margin-bottom: 15px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(135deg, #2c3e50, #4a6491);
+      color: white;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    
+    .service-card:hover .service-icon {
+      transform: scale(1.1);
+      background: linear-gradient(135deg, #34495e, #5a7ab8);
+    }
+    
+    .service-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 15px;
+      color: #2c3e50;
+      font-weight: 600;
+    }
+    
+    .service-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      text-align: left;
+    }
+    
+    .service-list li {
+      padding: 8px 0;
+      border-bottom: 1px solid #f8f9fa;
+      display: flex;
+      align-items: center;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+    
+    .service-list li:hover {
+      background: #f8f9fa;
+      padding-left: 8px;
+      border-radius: 4px;
+    }
+    
+    .service-list li:last-child {
+      border-bottom: none;
+    }
+    
+    .service-list li i {
+      color: #3498db;
+      margin-right: 10px;
+      font-size: 0.9rem;
+      transition: transform 0.2s ease;
+    }
+    
+    .service-list li:hover i {
+      transform: scale(1.1);
+    }
+    
+    /* Estilos responsivos para servicios */
+    @media (max-width: 768px) {
+      .services-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      
+      .service-card {
+        padding: 20px 15px;
+      }
+      
+      .service-icon {
+        font-size: 2rem;
+        width: 60px;
+        height: 60px;
+      }
+    }
+    
+    /* NUEVA SECCIÓN: Redes Sociales Destacadas - SIMPLIFICADA */
+    .social-highlight {
+      background: linear-gradient(135deg, #2c3e50, #4a6491);
+      padding: 50px 0;
+      color: white;
+      text-align: center;
+    }
+    
+    .social-highlight .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .social-highlight h2 {
+      font-size: 2rem;
+      margin-bottom: 25px;
+      font-weight: 700;
+    }
+    
+    .social-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+    
+    .social-card {
+      background: transparent;
+      border-radius: 14px;
+      padding: 30px 20px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .social-card:hover {
+      transform: translateY(-6px);
+    }
+    
+    .social-icon {
+      font-size: 3.5rem;
+      margin-bottom: 15px;
+      display: block;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .social-card:hover .social-icon {
+      transform: scale(1.08);
+    }
+    
+    .social-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+    
+    /* Colores específicos para cada red social */
+    .whatsapp-card .social-icon { color: #25d366; }
+    .instagram-card .social-icon { color: #e4405f; }
+    .tiktok-card .social-icon { color: #69c9d0; }
+    
+    /* MODIFICACIÓN: Redes sociales horizontales en móvil - SIMPLIFICADAS */
+    @media (max-width: 768px) {
+      .social-highlight {
+        padding: 40px 0;
+      }
+      
+      .social-highlight h2 {
+        font-size: 1.8rem;
+      }
+      
+      .social-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+      }
+      
+      .social-card {
+        padding: 20px 10px;
+        min-height: 150px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      
+      .social-icon {
+        font-size: 2.8rem;
+        margin-bottom: 10px;
+      }
+      
+      .social-card h3 {
+        font-size: 1rem;
+        margin-bottom: 15px;
+      }
+      
+      /* Eliminar el texto descriptivo de las redes sociales */
+      .social-card p {
+        display: none;
+      }
+    }
+    
+    /* Ajuste adicional para pantallas muy pequeñas */
+    @media (max-width: 480px) {
+      .social-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+      }
+      
+      .social-card {
+        padding: 15px 8px;
+        min-height: 130px;
+      }
+      
+      .social-icon {
+        font-size: 2.2rem;
+      }
+      
+      .social-card h3 {
+        font-size: 0.9rem;
+      }
+    }
+
+    /* Estilos para el modal de carrusel */
+    .carousel-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.95);
+      z-index: 10000; /* Mayor que el banner rojo (9999) */
+      justify-content: center;
+      align-items: center;
+      touch-action: pan-y pinch-zoom;
+    }
+    
+    .carousel-modal.active {
+      display: flex;
+      animation: fadeIn 0.3s ease;
+    }
+    
+    .carousel-content {
+      max-width: 95%;
+      max-height: 95%;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+    
+    .carousel-image-container {
+      position: relative;
+      width: 100%;
+      height: 70vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+    
+    .carousel-image {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      border-radius: 8px;
+      user-select: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+    }
+    
+    .carousel-close {
+      position: absolute;
+      top: 80px; /* Posicionado debajo del banner rojo */
+      right: 20px;
+      color: white;
+      font-size: 2.5rem;
+      cursor: pointer;
+      background: rgba(0,0,0,0.5);
+      border: none;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10002; /* Mayor que el modal (10000) */
+    }
+    
+    .carousel-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.3);
+      color: white;
+      border: none;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      font-size: 1.8rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: background 0.3s ease;
+      z-index: 10001;
+    }
+    
+    .carousel-nav:hover {
+      background: rgba(255,255,255,0.5);
+    }
+    
+    .carousel-prev {
+      left: 20px;
+    }
+    
+    .carousel-next {
+      right: 20px;
+    }
+    
+    .carousel-counter {
+      color: white;
+      margin-top: 15px;
+      font-size: 1.2rem;
+      text-align: center;
+      padding: 8px 16px;
+      background: rgba(0,0,0,0.5);
+      border-radius: 20px;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Mejoras para móviles */
+    @media (max-width: 768px) {
+      .carousel-content {
+        max-width: 98%;
+        max-height: 98%;
+      }
+      
+      .carousel-image-container {
+        height: 60vh;
+      }
+      
+      .carousel-nav {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+      }
+      
+      .carousel-prev {
+        left: 10px;
+      }
+      
+      .carousel-next {
+        right: 10px;
+      }
+      
+      .carousel-close {
+        top: 70px; /* Ajustado para móviles */
+        right: 10px;
+        width: 45px;
+        height: 45px;
+        font-size: 2rem;
+      }
+      
+      .carousel-counter {
+        font-size: 1rem;
+        padding: 6px 12px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .carousel-nav {
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
+      }
+      
+      .carousel-image-container {
+        height: 50vh;
+      }
+      
+      .carousel-close {
+        top: 65px; /* Ajuste adicional para pantallas muy pequeñas */
+      }
+    }
+
+    /* Áreas táctiles más grandes para navegación en móvil */
+    .carousel-touch-area {
+      position: absolute;
+      top: 0;
+      height: 100%;
+      width: 30%;
+      z-index: 10000;
+    }
+    
+    .carousel-touch-prev {
+      left: 0;
+    }
+    
+    .carousel-touch-next {
+      right: 0;
+    }
+
+    /* ESTILOS PARA LA SECCIÓN DE RESEÑAS EN CARRUSEL */
+    .reviews {
+      padding: 80px 0;
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      overflow: hidden;
+    }
+    
+    .reviews-carousel-container {
+      position: relative;
+      margin: 50px 0 40px;
+      padding: 0 60px;
+    }
+    
+    .reviews-track-container {
+      overflow: hidden;
+      border-radius: 16px;
+    }
+    
+    .reviews-track {
+      display: flex;
+      transition: transform 0.5s ease;
+      gap: 30px;
+    }
+    
+    .review-card {
+      flex: 0 0 calc(33.333% - 20px);
+      min-width: 300px;
+      background: white;
+      border-radius: 16px;
+      padding: 25px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+      border: 1px solid rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+    }
+    
+    .review-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    }
+    
+    .review-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 15px;
+    }
+    
+    .reviewer-info h4 {
+      font-size: 1.1rem;
+      margin-bottom: 5px;
+      color: #2c3e50;
+      font-weight: 600;
+    }
+    
+    .review-date {
+      font-size: 0.85rem;
+      color: #6c757d;
+    }
+    
+    .review-rating {
+      color: #ffc107;
+      font-size: 0.9rem;
+    }
+    
+    .review-rating i {
+      margin-right: 2px;
+    }
+    
+    .review-text {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #495057;
+      margin-bottom: 20px;
+      font-style: italic;
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    
+    .review-service {
+      font-size: 0.85rem;
+      color: #3498db;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding-top: 10px;
+      border-top: 1px solid #e9ecef;
+    }
+    
+    .review-service i {
+      font-size: 0.8rem;
+    }
+    
+    /* Botones de navegación del carrusel */
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: white;
+      border: none;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: #2c3e50;
+      transition: all 0.3s ease;
+      z-index: 10;
+    }
+    
+    .carousel-btn:hover {
+      background: #2c3e50;
+      color: white;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    
+    .carousel-btn.prev {
+      left: 0;
+    }
+    
+    .carousel-btn.next {
+      right: 0;
+    }
+    
+    /* Indicadores del carrusel */
+    .carousel-indicators {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 30px;
+    }
+    
+    .indicator {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #cbd5e0;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .indicator.active {
+      background: #2c3e50;
+      transform: scale(1.2);
+    }
+    
+    /* Formulario de nueva reseña */
+    .review-form-container {
+      background: white;
+      border-radius: 16px;
+      padding: 30px;
+      margin-top: 30px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    }
+    
+    .review-form-container h3 {
+      font-size: 1.5rem;
+      margin-bottom: 25px;
+      color: #2c3e50;
+      text-align: center;
+    }
+    
+    .review-form .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .review-form input,
+    .review-form select,
+    .review-form textarea {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #dee2e6;
+      border-radius: 8px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+    }
+    
+    .review-form input:focus,
+    .review-form select:focus,
+    .review-form textarea:focus {
+      outline: none;
+      border-color: #3498db;
+      box-shadow: 0 0 0 3px rgba(52,152,219,0.1);
+    }
+    
+    .review-form textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+    
+    .rating-input {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    
+    .rating-input label {
+      font-weight: 500;
+      color: #2c3e50;
+    }
+    
+    .rating-stars {
+      display: flex;
+      gap: 10px;
+      font-size: 1.8rem;
+      color: #ffc107;
+      cursor: pointer;
+    }
+    
+    .rating-stars i {
+      transition: all 0.2s ease;
+    }
+    
+    .rating-stars i:hover {
+      transform: scale(1.1);
+    }
+    
+    .btn-submit-review {
+      background: linear-gradient(135deg, #2c3e50, #4a6491);
+      color: white;
+      border: none;
+      padding: 14px 30px;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+    }
+    
+    .btn-submit-review:hover {
+      background: linear-gradient(135deg, #34495e, #5a7ab8);
+      transform: translateY(-2px);
+    }
+    
+    .reviews-cta {
+      text-align: center;
+      margin: 20px 0;
+    }
+    
+    .reviews-cta .btn {
+      display: inline-block;
+      padding: 12px 30px;
+      font-size: 1rem;
+      background: linear-gradient(135deg, #2c3e50, #4a6491);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .reviews-cta .btn:hover {
+      background: linear-gradient(135deg, #34495e, #5a7ab8);
+      transform: translateY(-2px);
+    }
+    
+    .success-message {
+      background: #d4edda;
+      color: #155724;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      text-align: center;
+      display: none;
+    }
+    
+    .success-message.show {
+      display: block;
+    }
+    
+    /* Estilos responsivos para el carrusel */
+    @media (max-width: 1024px) {
+      .review-card {
+        flex: 0 0 calc(50% - 15px);
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .reviews-carousel-container {
+        padding: 0 40px;
+      }
+      
+      .review-card {
+        flex: 0 0 calc(100% - 20px);
+      }
+      
+      .carousel-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+      }
+      
+      .review-form-container {
+        padding: 20px;
+      }
+      
+      .rating-stars {
+        font-size: 1.5rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .reviews-carousel-container {
+        padding: 0 30px;
+      }
+      
+      .review-card {
+        padding: 18px;
+      }
+      
+      .reviewer-info h4 {
+        font-size: 1rem;
+      }
+      
+      .review-text {
+        font-size: 0.9rem;
+      }
+      
+      .rating-stars {
+        font-size: 1.3rem;
+      }
+      
+      .carousel-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- BANNER DE REMODELACIÓN - COLOR ROJO -->
+  <div class="remodeling-banner">
+    <i class="fas fa-tools"></i>
+    UNDER REMODELING - We're improving your experience!
+    <i class="fas fa-hammer"></i>
+  </div>
+
+  <header class="header">
+   <div class="container header-container">
+      <a href="#inicio" class="logo-link">
+        <img />
+        <div class="logo-text">
+          <h1>AZ STATE <span>REMODELING LLC</span></h1>
+          <p>Transforming spaces, creating homes
+          </p>
+          <p>ROC 357827</p>
+          <p>License - Bonded - Insured </p>
+        </div>
+      </a>
+     <div class="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </div>
+  
+      <nav class="nav">
+      
+      </nav>
+      
+    </div>
+  </header>
+  <section id="inicio" class="hero">
+    <div class="hero-content">
+      <h2>Remodels that inspire</h2>
+      <p>We transform your spaces with innovative design and exceptional quality</p>
+      <a href="#contacto" class="btn btn-primary btn-float">Request a quote</a>
+    </div>
+    <div class="hero-overlay"></div>
+    
+  </section>
+
+  <!-- NUEVA SECCIÓN: Redes Sociales Destacadas - SIMPLIFICADA -->
+  <section class="social-highlight">
+    <div class="container">
+      <h2>Connect With Us</h2>
+      
+      <div class="social-grid">
+        <div class="social-card whatsapp-card">
+          <a href="https://wa.me/+16027416927" target="_blank">
+            <i class="fab fa-whatsapp social-icon"></i>
+          </a>
+          <h3>WhatsApp</h3>
+        </div>
+        
+        <div class="social-card instagram-card">
+          <a href="https://www.instagram.com/azstateremodeling" target="_blank">
+            <i class="fab fa-instagram social-icon"></i>
+          </a>
+          <h3>Instagram</h3>
+        </div>
+        
+        <div class="social-card tiktok-card">
+          <a href="https://www.tiktok.com/@azstateremodeling" target="_blank">
+            <i class="fab fa-tiktok social-icon"></i>
+          </a>
+          <h3>TikTok</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="servicios" class="services">
+    <div class="container">
+      <h2 class="section-title">Our <span>Services</span></h2>
+
+      <div class="services-grid">
+        <!-- Flooring -->
+        <div class="service-card" data-service="flooring">
+          <div class="service-icon"><i class="fas fa-layer-group"></i></div>
+          <h3>Flooring</h3>
+          <ul class="service-list">
+            <li data-subcategory="carpet"><i class="fas fa-check-circle"></i> Carpet</li>
+            <li data-subcategory="tile"><i class="fas fa-check-circle"></i> Tile</li>
+            <li data-subcategory="vinyl"><i class="fas fa-check-circle"></i> Vinyl</li>
+          </ul>
+        </div>
+
+        <!-- Painting -->
+        <div class="service-card" data-service="painting">
+          <div class="service-icon"><i class="fas fa-paint-roller"></i></div>
+          <h3>Painting</h3>
+          <ul class="service-list">
+            <li data-subcategory="interior"><i class="fas fa-check-circle"></i> Interior</li>
+            <li data-subcategory="exterior"><i class="fas fa-check-circle"></i> Exterior</li>
+          </ul>
+        </div>
+
+        <!-- Drywall/Stucco Repairs & Texture - CON NUEVO ICONO -->
+        <div class="service-card" data-service="drywall">
+          <div class="service-icon"><i class="fas fa-hard-hat"></i></div>
+          <h3>Drywall/Stucco Repairs & Texture</h3>
+          <ul class="service-list">
+            <li data-subcategory="drywall-repairs"><i class="fas fa-check-circle"></i> Drywall Repairs</li>
+            <li data-subcategory="stucco-repairs"><i class="fas fa-check-circle"></i> Stucco Repairs</li>
+            <li data-subcategory="texture-application"><i class="fas fa-check-circle"></i> Texture Application</li>
+          </ul>
+        </div>
+
+        <!-- Bathroom Remodel -->
+        <div class="service-card" data-service="bathroom">
+          <div class="service-icon"><i class="fas fa-bath"></i></div>
+          <h3>Bathroom Remodel</h3>
+          <ul class="service-list">
+            <li data-subcategory="accessories"><i class="fas fa-check-circle"></i> Accessories</li>
+            <li data-subcategory="glass-doors"><i class="fas fa-check-circle"></i> Glass Doors</li>
+            <li data-subcategory="plumbing"><i class="fas fa-check-circle"></i> Plumbing</li>
+            <li data-subcategory="vanitys"><i class="fas fa-check-circle"></i> Vanity's</li>
+            <li data-subcategory="walls-flooring"><i class="fas fa-check-circle"></i> Walls and Flooring</li>
+          </ul>
+        </div>
+
+        <!-- Kitchen Remodel -->
+        <div class="service-card" data-service="kitchen">
+          <div class="service-icon"><i class="fas fa-utensils"></i></div>
+          <h3>Kitchen Remodel</h3>
+          <ul class="service-list">
+            <li data-subcategory="backsplash"><i class="fas fa-check-circle"></i> Backsplash</li>
+            <li data-subcategory="cabinets"><i class="fas fa-check-circle"></i> Cabinets</li>
+            <li data-subcategory="countertops"><i class="fas fa-check-circle"></i> Countertops</li>
+            <li data-subcategory="range-hoods"><i class="fas fa-check-circle"></i> Range Hoods</li>
+            <li data-subcategory="sink"><i class="fas fa-check-circle"></i> Sink</li>
+          </ul>
+        </div>
+
+        <!-- Custom Cabinets -->
+        <div class="service-card" data-service="cabinets">
+          <div class="service-icon"><i class="fas fa-cube"></i></div>
+          <h3>Custom Cabinets</h3>
+          <ul class="service-list">
+            <li data-subcategory="custom-design"><i class="fas fa-check-circle"></i> Custom Design</li>
+            <li data-subcategory="professional-installation"><i class="fas fa-check-circle"></i> Professional Installation</li>
+            <li data-subcategory="various-materials"><i class="fas fa-check-circle"></i> Various Materials</li>
+          </ul>
+        </div>
+
+        <!-- Trim -->
+        <div class="service-card" data-service="trim">
+          <div class="service-icon"><i class="fas fa-ruler-combined"></i></div>
+          <h3>Trim</h3>
+          <ul class="service-list">
+            <li data-subcategory="baseboard"><i class="fas fa-check-circle"></i> Baseboard</li>
+            <li data-subcategory="crown-molding"><i class="fas fa-check-circle"></i> Crown Molding</li>
+            <li data-subcategory="doors"><i class="fas fa-check-circle"></i> Doors</li>
+          </ul>
+        </div>
+
+        <!-- Hardscape -->
+        <div class="service-card" data-service="hardscape">
+          <div class="service-icon"><i class="fas fa-tree"></i></div>
+          <h3>Hardscape</h3>
+          <ul class="service-list">
+            <li data-subcategory="concrete"><i class="fas fa-check-circle"></i> Concrete</li>
+            <li data-subcategory="irrigation-systems"><i class="fas fa-check-circle"></i> Irrigation Systems</li>
+            <li data-subcategory="synthetic-grass"><i class="fas fa-check-circle"></i> Synthetic Grass</li>
+            <li data-subcategory="pavers-installation"><i class="fas fa-check-circle"></i> Pavers Installation</li>
+            <li data-subcategory="tree-planting"><i class="fas fa-check-circle"></i> Tree Planting</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal para visualización de imágenes en carrusel -->
+  <div class="carousel-modal" id="carouselModal">
+    <button class="carousel-close" id="carouselClose">&times;</button>
+    <button class="carousel-nav carousel-prev" id="carouselPrev"><i class="fas fa-chevron-left"></i></button>
+    <button class="carousel-nav carousel-next" id="carouselNext"><i class="fas fa-chevron-right"></i></button>
+    
+    <!-- Áreas táctiles para navegación en móvil -->
+    <div class="carousel-touch-area carousel-touch-prev" id="touchPrev"></div>
+    <div class="carousel-touch-area carousel-touch-next" id="touchNext"></div>
+    
+    <div class="carousel-content">
+      <div class="carousel-image-container">
+        <img src="" alt="" class="carousel-image" id="carouselImage">
+      </div>
+      <div class="carousel-counter" id="carouselCounter"></div>
+    </div>
+  </div>
+
+  <!-- Sección del video más pequeño -->
+  <section class="video-section">
+    <h1>FULL REMODEL</h1>
+    <div class="video-container">
+      <video id="mivideo" controls>
+        <source src="videos/full.mp4" type="video/mp4">
+        Tu navegador no soporta la etiqueta de video
+      </video>
+    </div>
+  </section>
+
+  <section id="nosotros" class="about">
+    <div class="container">
+      <div class="about-content">
+        <h2 class="section-title">About <span>Us</span></h2>
+        <p>At AZ State Remodeling LLC, we are dedicated to transforming ordinary spaces into extraordinary places. With
+          years of experience in interior and exterior remodeling, we are committed to delivering quality, style, and
+          functionality in every project we undertake.</p>
+
+        <p>From modern kitchens and elegant bathrooms to custom finishes and durable flooring, our team specializes in
+          bringing your ideas to life with attention to detail, premium materials, and exceptional service.</p>
+
+        <p>We pride ourselves on building strong relationships with our clients, based on trust, professionalism, and
+          results. Every home tells a story, and our mission is to help you write yours with spaces that reflect your
+          personality and lifestyle.</p>
+
+        <div class="stats">
+          <div class="stat-item">
+          </div>
+          <div class="stat-item">
+          </div>
+          <div class="stat-item">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto" class="contact">
+    <div class="container">
+      <h2 class="section-title">Cont<span>act</span></h2>
+      <div class="contact-container">
+        <div class="contact-info">
+          <h3>Contact information</h3>
+
+          <p><i class="fas fa-phone"></i> +1 602 741 6927</p>
+          <p><i class="fas fa-envelope"></i> azstateremodeling@gmail.com</p>
+        <div class="social-links">
+          <a href="https://wa.me/+16027416927" target="_blank"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://www.instagram.com/azstateremodeling" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.tiktok.com/@azstateremodeling" target="_blank"><i class="fab fa-tiktok"></i></a>
+        </div>
+        </div>
+        <form class="contact-form" action="https://formsubmit.co/victor@azstateremodeling.com" method="POST">
+          <input type="hidden" name="_next" value="http://127.0.0.1:5500/index.html">
+          <input type="hidden" name="_captcha" value="false">
+
+          <div class="form-group">
+            <input type="text" name="name" placeholder="Full name" required>
+          </div>
+          <div class="form-group">
+            <input type="email" name="email" placeholder="Email" required>
+          </div>
+          <div class="form-group">
+            <input type="tel" name="telefono" placeholder="Phone">
+          </div>
+          <div class="form-group">
+            <textarea name="mensaje" placeholder="Tell us about your project" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Send message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN DE RESEÑAS EN CARRUSEL -->
+  <section id="resenas" class="reviews">
+    <div class="container">
+      <h2 class="section-title">Customer <span>Reviews</span></h2>
+      
+      <!-- Carrusel de reseñas -->
+      <div class="reviews-carousel-container">
+        <button class="carousel-btn prev" id="reviewPrevBtn"><i class="fas fa-chevron-left"></i></button>
+        
+        <div class="reviews-track-container">
+          <div class="reviews-track" id="reviewsTrack">
+            <!-- Las reseñas se cargarán aquí dinámicamente -->
+          </div>
+        </div>
+        
+        <button class="carousel-btn next" id="reviewNextBtn"><i class="fas fa-chevron-right"></i></button>
+      </div>
+      
+      <!-- Indicadores del carrusel -->
+      <div class="carousel-indicators" id="carouselIndicators"></div>
+
+      <!-- Botón para mostrar formulario -->
+      <div class="reviews-cta">
+        <button class="btn" id="showReviewFormBtn">Write a Review</button>
+      </div>
+
+      <!-- Formulario de nueva reseña (oculto inicialmente) -->
+      <div class="review-form-container" id="reviewFormContainer" style="display: none;">
+        <h3>Share Your Experience</h3>
+        
+        <!-- Mensaje de éxito -->
+        <div class="success-message" id="successMessage">
+          Thank you for your review! It has been added successfully.
+        </div>
+
+        <form class="review-form" id="reviewForm">
+          <div class="form-group">
+            <input type="text" id="reviewerName" placeholder="Your Name" required>
+          </div>
+          
+          <div class="form-group">
+            <select id="reviewService" required>
+              <option value="">Select Service</option>
+              <option value="Flooring">Flooring</option>
+              <option value="Painting">Painting</option>
+              <option value="Drywall/Stucco">Drywall/Stucco</option>
+              <option value="Bathroom Remodel">Bathroom Remodel</option>
+              <option value="Kitchen Remodel">Kitchen Remodel</option>
+              <option value="Custom Cabinets">Custom Cabinets</option>
+              <option value="Trim">Trim</option>
+              <option value="Hardscape">Hardscape</option>
+            </select>
+          </div>
+
+          <div class="form-group rating-input">
+            <label>Your Rating:</label>
+            <div class="rating-stars" id="ratingStars">
+              <i class="far fa-star" data-rating="1"></i>
+              <i class="far fa-star" data-rating="2"></i>
+              <i class="far fa-star" data-rating="3"></i>
+              <i class="far fa-star" data-rating="4"></i>
+              <i class="far fa-star" data-rating="5"></i>
+            </div>
+            <input type="hidden" id="reviewRating" value="0" required>
+          </div>
+
+          <div class="form-group">
+            <textarea id="reviewText" placeholder="Tell us about your experience..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn-submit-review">Submit Review</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <h3>AZ STATE<span>REMODELING LLC</span></h3>
+          <p></p>
+        </div>
+        <div class="footer-links">
+          <h4>Quick links</h4>
+          <ul>
+            <li><a href="#inicio">Main</a></li>
+            <li><a href="#servicios">Services</a></li>
+            <li><a href="#nosotros">Us</a></li>
+            <li><a href="#contacto">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-services">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#">Comprehensive Remodeling</a></li>
+            <li><a href="#">Custom Kitchens</a></li>
+            <li><a href="#">Modern Bathrooms</a></li>
+            <li><a href="#">Extensions</a></li>
+            <li><a href="#">Interior Design</a></li>
+            <li><a href="#">Fireplaces</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="floating-buttons">
+        <!-- WhatsApp -->
+        <a href="https://wa.me/+16027416927" target="_blank" class="float-btn whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      
+        <!-- Llamada -->
+        <a href="tel:+16027416927" class="float-btn call">
+          <i class="fas fa-phone"></i>
+        </a>        
+        <!-- Mensaje (puede ser SMS o al formulario) -->
+        <a href="sms:+16027416927" class="float-btn message">
+          <i class="fas fa-comment-dots"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Datos de imágenes para cada servicio y subcategoría
+    const serviceImages = {
+      flooring: {
+        carpet: [
+          "img/carpet1.jpg", "img/carpet2.jpg", "img/carpet3.jpg", "img/carpet4.jpg", "img/carpet5.jpg"
+        ],
+        tile: [
+          "img/Tale1.jpg", "img/Tale2.jpg", "img/tile3.jpg", "img/tile4.jpg", "img/tile5.jpg"
+        ],
+        vinyl: [
+          "img/v0.jpeg", "img/v1.jpeg", "img/v3.jpeg", "img/v4.jpeg", "img/v5.jpeg", 
+          "img/v6.jpeg", "img/v7.jpeg", "img/vv8.jpeg", "img/v9.jpeg", "img/v10.jpeg", 
+          "img/v11.jpeg", "img/v12.jpeg", "img/v13.jpeg", "img/v14.jpeg"
+        ]
+      },
+      painting: {
+        interior: [
+          "img/interior1.jpg", "img/interior2.jpg", "img/interior3.jpg", "img/interior4.jpg"
+        ],
+        exterior: [
+          "img/Pergola1.jpg", "img/Pergola2.jpg", "img/Pergola3.jpg", "img/Pergola4.jpg"
+        ]
+      },
+      drywall: {
+        "drywall-repairs": [
+          "img/ra1.jpg", "img/ra2.jpg", "img/ra3.jpg", "img/ra4.jpg", "img/ra5.jpg",
+          "img/ra6.jpg", "img/ra7.jpg", "img/ra8.jpg", "img/ra9.jpg", "img/ra10.jpg"
+        ],
+        "stucco-repairs": [
+          "img/stucco.jpeg", "img/stucco10.jpeg", "img/stucco20.jpeg", "img/stucco30.jpeg", "img/stucco40.jpeg"
+        ],
+        "texture-application": [
+          "img/tex.jpeg", "img/tex0.jpeg", "img/tex1.jpeg", "img/tex2.jpeg"
+        ]
+      },
+      bathroom: {
+        accessories: [
+          "img/accessories1.jpg", "img/accessories2.jpg", "img/accessories3.jpg"
+        ],
+        "glass-doors": [
+          "img/Regadera1.jpg", "img/Regadera2.jpg", "img/Regadera3.jpg", "img/Regadera4.jpg"
+        ],
+        plumbing: [
+          "img/plumbing1.jpg", "img/plumbing2.jpg", "img/plumbing3.jpg"
+        ],
+        vanitys: [
+          "img/b0.jpeg", "img/b1.jpeg", "img/b2.jpeg", "img/b3.jpeg", "img/b4.jpeg"
+        ],
+        "walls-flooring": [
+          "img/b5.jpeg", "img/b6.jpeg", "img/b8.jpeg", "img/b9.jpeg", "img/b10.jpeg", 
+          "img/b11.jpeg", "img/b12.jpeg", "img/b13.jpeg"
+        ]
+      },
+      kitchen: {
+        backsplash: [
+          "img/backsplash1.jpg", "img/backsplash2.jpg", "img/backsplash3.jpg"
+        ],
+        cabinets: [
+          "img/wood1.jpg", "img/wood2.jpg", "img/wood3.jpg", "img/wood4.jpg", "img/wood5.jpg"
+        ],
+        countertops: [
+          "img/countertop1.jpg", "img/countertop2.jpg", "img/countertop3.jpg"
+        ],
+        "range-hoods": [
+          "img/rangehood1.jpg", "img/rangehood2.jpg", "img/rangehood3.jpg"
+        ],
+        sink: [
+          "img/sink1.jpg", "img/sink2.jpg", "img/sink3.jpg"
+        ]
+      },
+      cabinets: {
+        "custom-design": [
+          "img/custom1.jpg", "img/custom2.jpg", "img/custom3.jpg", "img/custom4.jpg", "img/custom5.jpg"
+        ],
+        "professional-installation": [
+          "img/installation1.jpg", "img/installation2.jpg", "img/installation3.jpg", "img/installation4.jpg"
+        ],
+        "various-materials": [
+          "img/materials1.jpg", "img/materials2.jpg", "img/materials3.jpg", "img/materials4.jpg"
+        ]
+      },
+      trim: {
+        baseboard: [
+          "img/baseboard1.jpg", "img/baseboard2.jpg", "img/baseboard3.jpg", "img/baseboard4.jpg"
+        ],
+        "crown-molding": [
+          "img/crown1.jpg", "img/crown2.jpg", "img/crown3.jpg", "img/crown4.jpg"
+        ],
+        doors: [
+          "img/Framing1.jpg", "img/Framing2.jpg", "img/Framing3.jpg", "img/Framing4.jpg",
+          "img/doors1.jpg", "img/doors2.jpg", "img/doors3.jpg"
+        ]
+      },
+      hardscape: {
+        concrete: [
+          "img/concrete1.jpg", "img/concrete2.jpg", "img/concrete3.jpg", "img/concrete4.jpg"
+        ],
+        "irrigation-systems": [
+          "img/irrigation1.jpg", "img/irrigation2.jpg", "img/irrigation3.jpg", "img/irrigation4.jpg"
+        ],
+        "synthetic-grass": [
+          "img/grass1.jpg", "img/grass2.jpg", "img/grass3.jpg", "img/grass4.jpg"
+        ],
+        "pavers-installation": [
+          "img/Pave1.jpg", "img/Pave2.jpg", "img/Pave3.jpg", "img/Pave4.jpg", "img/Pave5.jpg"
+        ],
+        "tree-planting": [
+          "img/tree1.jpg", "img/tree2.jpg", "img/tree3.jpg", "img/tree4.jpg"
+        ]
+      }
+    };
+
+    // Sistema de reseñas en carrusel
+    document.addEventListener('DOMContentLoaded', function() {
+      // Cargar reseñas guardadas o usar reseñas de ejemplo
+      let reviews = JSON.parse(localStorage.getItem('reviews')) || [
+        {
+          name: 'Michael Thompson',
+          date: 'February 15, 2025',
+          rating: 5,
+          text: 'Excellent work on our kitchen remodel! The team was professional, punctual, and completed the project ahead of schedule. The quality of the cabinets and countertops is outstanding. Highly recommend AZ State Remodeling!',
+          service: 'Kitchen Remodel'
+        },
+        {
+          name: 'Sarah Martinez',
+          date: 'January 28, 2025',
+          rating: 5,
+          text: 'Amazing transformation of our master bathroom! From the tile work to the glass doors, every detail was perfect. The team was clean, respectful, and communicated well throughout the entire process. Will definitely use them again!',
+          service: 'Bathroom Remodel'
+        },
+        {
+          name: 'David & Lisa Chen',
+          date: 'January 10, 2025',
+          rating: 5,
+          text: 'We had our entire house flooring replaced with vinyl planks and tile. The installation was flawless and the team paid attention to every detail. They even helped us choose the perfect materials. Very satisfied customers!',
+          service: 'Flooring'
+        },
+        {
+          name: 'Robert Wilson',
+          date: 'December 18, 2024',
+          rating: 4.5,
+          text: 'Great experience with the exterior painting and stucco repairs. The team was very professional and the quality of work exceeded our expectations. They cleaned up everything daily and finished on time. Would hire again!',
+          service: 'Painting & Stucco'
+        },
+        {
+          name: 'Jennifer Adams',
+          date: 'December 5, 2024',
+          rating: 5,
+          text: 'The hardscape work in our backyard is amazing! The pavers installation and synthetic grass look beautiful. The team was creative with the design and executed it perfectly. Our backyard feels like a resort now!',
+          service: 'Hardscape'
+        },
+        {
+          name: 'Carlos Rodriguez',
+          date: 'November 20, 2024',
+          rating: 5,
+          text: 'Custom cabinets installation was perfect. They designed exactly what we wanted and the craftsmanship is top-notch. The team was very professional and the price was very reasonable. Highly recommended!',
+          service: 'Custom Cabinets'
+        }
+      ];
+
+      let currentIndex = 0;
+      const track = document.getElementById('reviewsTrack');
+      const prevBtn = document.getElementById('reviewPrevBtn');
+      const nextBtn = document.getElementById('reviewNextBtn');
+      const indicatorsContainer = document.getElementById('carouselIndicators');
+
+      // Función para renderizar estrellas
+      function renderStars(rating) {
+        let stars = '';
+        const fullStars = Math.floor(rating);
+        const hasHalfStar = rating % 1 !== 0;
+        
+        for (let i = 0; i < fullStars; i++) {
+          stars += '<i class="fas fa-star"></i>';
+        }
+        
+        if (hasHalfStar) {
+          stars += '<i class="fas fa-star-half-alt"></i>';
+        }
+        
+        const emptyStars = 5 - Math.ceil(rating);
+        for (let i = 0; i < emptyStars; i++) {
+          stars += '<i class="far fa-star"></i>';
+        }
+        
+        return stars;
+      }
+
+      // Función para mostrar las reseñas en el carrusel
+      function displayReviews() {
+        track.innerHTML = '';
+        
+        reviews.slice().reverse().forEach(review => {
+          const reviewCard = document.createElement('div');
+          reviewCard.className = 'review-card';
+          
+          reviewCard.innerHTML = `
+            <div class="review-header">
+              <div class="reviewer-info">
+                <h4>${review.name}</h4>
+                <div class="review-date">${review.date}</div>
+              </div>
+              <div class="review-rating">
+                ${renderStars(review.rating)}
+              </div>
+            </div>
+            <p class="review-text">"${review.text}"</p>
+            <div class="review-service">
+              <i class="fas fa-tag"></i> ${review.service}
+            </div>
+          `;
+          
+          track.appendChild(reviewCard);
+        });
+        
+        updateIndicators();
+        updateCarouselPosition();
+      }
+
+      // Actualizar posición del carrusel
+      function updateCarouselPosition() {
+        const cardWidth = track.children[0]?.offsetWidth || 0;
+        const gap = 30; // El gap definido en CSS
+        const scrollAmount = (cardWidth + gap) * currentIndex;
+        track.style.transform = `translateX(-${scrollAmount}px)`;
+      }
+
+      // Actualizar indicadores
+      function updateIndicators() {
+        const totalSlides = Math.ceil(reviews.length / 3); // 3 reseñas por slide en desktop
+        indicatorsContainer.innerHTML = '';
+        
+        for (let i = 0; i < totalSlides; i++) {
+          const indicator = document.createElement('div');
+          indicator.className = `indicator ${i === currentIndex ? 'active' : ''}`;
+          indicator.addEventListener('click', () => {
+            currentIndex = i;
+            updateCarouselPosition();
+            updateIndicators();
+          });
+          indicatorsContainer.appendChild(indicator);
+        }
+      }
+
+      // Event listeners para navegación
+      prevBtn.addEventListener('click', () => {
+        if (currentIndex > 0) {
+          currentIndex--;
+          updateCarouselPosition();
+          updateIndicators();
+        }
+      });
+
+      nextBtn.addEventListener('click', () => {
+        const totalSlides = Math.ceil(reviews.length / 3);
+        if (currentIndex < totalSlides - 1) {
+          currentIndex++;
+          updateCarouselPosition();
+          updateIndicators();
+        }
+      });
+
+      // Sistema de calificación con estrellas
+      const stars = document.querySelectorAll('.rating-stars i');
+      const ratingInput = document.getElementById('reviewRating');
+      
+      stars.forEach(star => {
+        star.addEventListener('mouseenter', function() {
+          const rating = this.dataset.rating;
+          highlightStars(rating);
+        });
+        
+        star.addEventListener('mouseleave', function() {
+          const currentRating = ratingInput.value;
+          highlightStars(currentRating);
+        });
+        
+        star.addEventListener('click', function() {
+          const rating = this.dataset.rating;
+          ratingInput.value = rating;
+          highlightStars(rating);
+        });
+      });
+      
+      function highlightStars(rating) {
+        stars.forEach(star => {
+          const starRating = star.dataset.rating;
+          if (starRating <= rating) {
+            star.className = 'fas fa-star';
+          } else {
+            star.className = 'far fa-star';
+          }
+        });
+      }
+
+      // Mostrar/ocultar formulario
+      const showFormBtn = document.getElementById('showReviewFormBtn');
+      const formContainer = document.getElementById('reviewFormContainer');
+      
+      showFormBtn.addEventListener('click', function() {
+        if (formContainer.style.display === 'none') {
+          formContainer.style.display = 'block';
+          showFormBtn.textContent = 'Hide Form';
+        } else {
+          formContainer.style.display = 'none';
+          showFormBtn.textContent = 'Write a Review';
+        }
+      });
+
+      // Manejar envío del formulario
+      const reviewForm = document.getElementById('reviewForm');
+      const successMessage = document.getElementById('successMessage');
+      
+      reviewForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const name = document.getElementById('reviewerName').value;
+        const service = document.getElementById('reviewService').value;
+        const rating = parseFloat(document.getElementById('reviewRating').value);
+        const text = document.getElementById('reviewText').value;
+        
+        if (rating === 0) {
+          alert('Please select a rating');
+          return;
+        }
+        
+        const today = new Date();
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        const newReview = {
+          name: name,
+          date: today.toLocaleDateString('en-US', options),
+          rating: rating,
+          text: text,
+          service: service
+        };
+        
+        reviews.push(newReview);
+        localStorage.setItem('reviews', JSON.stringify(reviews));
+        
+        displayReviews();
+        
+        successMessage.classList.add('show');
+        
+        document.getElementById('reviewerName').value = '';
+        document.getElementById('reviewService').value = '';
+        document.getElementById('reviewText').value = '';
+        document.getElementById('reviewRating').value = '0';
+        highlightStars(0);
+        
+        setTimeout(() => {
+          successMessage.classList.remove('show');
+        }, 3000);
+      });
+
+      // Mostrar reseñas iniciales
+      displayReviews();
+
+      // Funcionalidad del carrusel de imágenes (código original)
+      const modal = document.getElementById('carouselModal');
+      const modalImage = document.getElementById('carouselImage');
+      const modalClose = document.getElementById('carouselClose');
+      const modalPrev = document.getElementById('carouselPrev');
+      const modalNext = document.getElementById('carouselNext');
+      const modalCounter = document.getElementById('carouselCounter');
+      const touchPrev = document.getElementById('touchPrev');
+      const touchNext = document.getElementById('touchNext');
+      
+      let currentImages = [];
+      let imageIndex = 0;
+      let touchStartX = 0;
+      let touchEndX = 0;
+      
+      const serviceItems = document.querySelectorAll('.service-list li');
+      
+      serviceItems.forEach(item => {
+        item.addEventListener('click', function(e) {
+          e.stopPropagation();
+          const serviceCard = this.closest('.service-card');
+          const service = serviceCard.getAttribute('data-service');
+          const subcategory = this.getAttribute('data-subcategory');
+          
+          if (serviceImages[service] && serviceImages[service][subcategory]) {
+            currentImages = serviceImages[service][subcategory];
+            imageIndex = 0;
+            
+            if (currentImages.length > 0) {
+              modalImage.src = currentImages[0];
+              updateImageCounter();
+              modal.classList.add('active');
+              document.body.style.overflow = 'hidden';
+            }
+          } else {
+            alert('No images available for this subcategory yet.');
+          }
+        });
+      });
+      
+      const serviceCards = document.querySelectorAll('.service-card');
+      
+      serviceCards.forEach(card => {
+        card.addEventListener('click', function() {
+          const service = this.getAttribute('data-service');
+          let allImages = [];
+          if (serviceImages[service]) {
+            Object.values(serviceImages[service]).forEach(subcategoryImages => {
+              allImages = allImages.concat(subcategoryImages);
+            });
+          }
+          
+          currentImages = allImages;
+          imageIndex = 0;
+          
+          if (currentImages.length > 0) {
+            modalImage.src = currentImages[0];
+            updateImageCounter();
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+          } else {
+            alert('No images available for this service yet.');
+          }
+        });
+      });
+      
+      modalClose.addEventListener('click', function() {
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      });
+      
+      function goToPrevImage() {
+        if (currentImages.length > 0) {
+          imageIndex = (imageIndex - 1 + currentImages.length) % currentImages.length;
+          modalImage.src = currentImages[imageIndex];
+          updateImageCounter();
+        }
+      }
+      
+      function goToNextImage() {
+        if (currentImages.length > 0) {
+          imageIndex = (imageIndex + 1) % currentImages.length;
+          modalImage.src = currentImages[imageIndex];
+          updateImageCounter();
+        }
+      }
+      
+      modalPrev.addEventListener('click', goToPrevImage);
+      modalNext.addEventListener('click', goToNextImage);
+      
+      touchPrev.addEventListener('click', goToPrevImage);
+      touchNext.addEventListener('click', goToNextImage);
+      
+      modalImage.addEventListener('touchstart', function(e) {
+        touchStartX = e.changedTouches[0].screenX;
+      }, {passive: true});
+      
+      modalImage.addEventListener('touchend', function(e) {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+      }, {passive: true});
+      
+      function handleSwipe() {
+        const swipeThreshold = 50;
+        
+        if (touchEndX < touchStartX - swipeThreshold) {
+          goToNextImage();
+        } else if (touchEndX > touchStartX + swipeThreshold) {
+          goToPrevImage();
+        }
+      }
+      
+      function updateImageCounter() {
+        modalCounter.textContent = `${imageIndex + 1} / ${currentImages.length}`;
+      }
+      
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+          modal.classList.remove('active');
+          document.body.style.overflow = 'auto';
+        }
+      });
+      
+      document.addEventListener('keydown', function(e) {
+        if (modal.classList.contains('active')) {
+          if (e.key === 'Escape') {
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+          } else if (e.key === 'ArrowLeft') {
+            goToPrevImage();
+          } else if (e.key === 'ArrowRight') {
+            goToNextImage();
+          }
+        }
+      });
+    });
+  </script>
+ 
+</body>
+</html>
