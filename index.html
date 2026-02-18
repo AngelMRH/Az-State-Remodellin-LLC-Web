@@ -7,7 +7,7 @@
   <title>Az State Remodeling LLC</title>
   <link rel="stylesheet" href="styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-   <script src="js/resenas.js"></script>
+  
   <style>
     /* BANNER DE REMODELACIÓN - COLOR ROJO */
     .remodeling-banner {
@@ -116,7 +116,7 @@
     
     #mivideo {
       width: 100%;
-      max-width: 400px; /* Tamaño reducido a 400px */
+      max-width: 400px;
       height: auto;
       border-radius: 8px;
       box-shadow: 0 5px 15px rgba(0,0,0,0.2);
@@ -363,7 +363,7 @@
       width: 100%;
       height: 100%;
       background: rgba(0,0,0,0.95);
-      z-index: 10000; /* Mayor que el banner rojo (9999) */
+      z-index: 10000;
       justify-content: center;
       align-items: center;
       touch-action: pan-y pinch-zoom;
@@ -407,7 +407,7 @@
     
     .carousel-close {
       position: absolute;
-      top: 80px; /* Posicionado debajo del banner rojo */
+      top: 80px;
       right: 20px;
       color: white;
       font-size: 2.5rem;
@@ -420,7 +420,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      z-index: 10002; /* Mayor que el modal (10000) */
+      z-index: 10002;
     }
     
     .carousel-nav {
@@ -495,7 +495,7 @@
       }
       
       .carousel-close {
-        top: 70px; /* Ajustado para móviles */
+        top: 70px;
         right: 10px;
         width: 45px;
         height: 45px;
@@ -520,7 +520,7 @@
       }
       
       .carousel-close {
-        top: 65px; /* Ajuste adicional para pantallas muy pequeñas */
+        top: 65px;
       }
     }
 
@@ -541,7 +541,7 @@
       right: 0;
     }
 
-    /* ESTILOS PARA LA SECCIÓN DE RESEÑAS EN CARRUSEL */
+    /* ESTILOS PARA LA SECCIÓN DE RESEÑAS CON AUTENTICACIÓN LOCAL */
     .reviews {
       padding: 80px 0;
       background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
@@ -588,15 +588,34 @@
       margin-bottom: 15px;
     }
     
+    .reviewer-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .reviewer-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #2c3e50, #4a6491);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+    
     .reviewer-info h4 {
       font-size: 1.1rem;
-      margin-bottom: 5px;
+      margin-bottom: 2px;
       color: #2c3e50;
       font-weight: 600;
     }
     
     .review-date {
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       color: #6c757d;
     }
     
@@ -633,6 +652,19 @@
     
     .review-service i {
       font-size: 0.8rem;
+    }
+    
+    .verified-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.75rem;
+      color: #34a853;
+      margin-left: 5px;
+    }
+    
+    .verified-badge i {
+      font-size: 0.7rem;
     }
     
     /* Botones de navegación del carrusel */
@@ -690,6 +722,213 @@
     .indicator.active {
       background: #2c3e50;
       transform: scale(1.2);
+    }
+    
+    /* Panel de autenticación local */
+    .auth-section {
+      display: flex;
+      justify-content: center;
+      margin: 20px 0;
+    }
+    
+    .user-info {
+      background: white;
+      border-radius: 50px;
+      padding: 8px 20px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    
+    .user-details {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .user-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #2c3e50, #4a6491);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+    
+    .user-details span {
+      font-weight: 500;
+      color: #2c3e50;
+    }
+    
+    .btn-login {
+      background: linear-gradient(135deg, #2c3e50, #4a6491);
+      color: white;
+      border: none;
+      padding: 10px 25px;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-login:hover {
+      background: linear-gradient(135deg, #34495e, #5a7ab8);
+      transform: translateY(-2px);
+    }
+    
+    .btn-logout {
+      background: #dc3545;
+      color: white;
+      border: none;
+      padding: 6px 15px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-logout:hover {
+      background: #c82333;
+    }
+    
+    /* Modal de login */
+    .login-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      z-index: 20000;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .login-modal.active {
+      display: flex;
+    }
+    
+    .login-container {
+      background: white;
+      border-radius: 16px;
+      padding: 30px;
+      max-width: 400px;
+      width: 90%;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+    
+    .login-container h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      color: #2c3e50;
+      text-align: center;
+    }
+    
+    .login-container p {
+      text-align: center;
+      color: #6c757d;
+      margin-bottom: 20px;
+    }
+    
+    .login-options {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+    
+    .login-option {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 15px;
+      border: 1px solid #dee2e6;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .login-option:hover {
+      background: #f8f9fa;
+      border-color: #2c3e50;
+    }
+    
+    .login-option i {
+      font-size: 1.5rem;
+      width: 30px;
+      text-align: center;
+    }
+    
+    .login-option .fa-envelope { color: #ea4335; }
+    .login-option .fa-mobile-alt { color: #34a853; }
+    
+    .login-option span {
+      font-weight: 500;
+      color: #2c3e50;
+    }
+    
+    .login-form {
+      display: none;
+      margin-top: 20px;
+    }
+    
+    .login-form.active {
+      display: block;
+    }
+    
+    .login-form input {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #dee2e6;
+      border-radius: 8px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.95rem;
+      margin-bottom: 15px;
+    }
+    
+    .login-form input:focus {
+      outline: none;
+      border-color: #3498db;
+      box-shadow: 0 0 0 3px rgba(52,152,219,0.1);
+    }
+    
+    .login-form button {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(135deg, #2c3e50, #4a6491);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .login-form button:hover {
+      background: linear-gradient(135deg, #34495e, #5a7ab8);
+    }
+    
+    .login-close {
+      display: block;
+      text-align: center;
+      margin-top: 20px;
+      color: #6c757d;
+      cursor: pointer;
+    }
+    
+    .login-close:hover {
+      color: #2c3e50;
     }
     
     /* Formulario de nueva reseña */
@@ -782,6 +1021,12 @@
       transform: translateY(-2px);
     }
     
+    .btn-submit-review:disabled {
+      background: #6c757d;
+      cursor: not-allowed;
+      transform: none;
+    }
+    
     .reviews-cta {
       text-align: center;
       margin: 20px 0;
@@ -802,6 +1047,12 @@
     .reviews-cta .btn:hover {
       background: linear-gradient(135deg, #34495e, #5a7ab8);
       transform: translateY(-2px);
+    }
+    
+    .reviews-cta .btn:disabled {
+      background: #6c757d;
+      cursor: not-allowed;
+      transform: none;
     }
     
     .success-message {
@@ -846,6 +1097,16 @@
       
       .rating-stars {
         font-size: 1.5rem;
+      }
+      
+      .user-info {
+        flex-direction: column;
+        border-radius: 16px;
+        padding: 15px;
+      }
+      
+      .login-container {
+        padding: 20px;
       }
     }
     
@@ -892,10 +1153,9 @@
         <img />
         <div class="logo-text">
           <h1>AZ STATE <span>REMODELING LLC</span></h1>
-          <p>Transforming spaces, creating homes
-          </p>
+          <p>Transforming spaces, creating homes</p>
           <p>ROC 357827</p>
-          <p>License - Bonded - Insured </p>
+          <p>License - Bonded - Insured</p>
         </div>
       </a>
      <div class="menu-toggle">
@@ -908,6 +1168,7 @@
       
     </div>
   </header>
+  
   <section id="inicio" class="hero">
     <div class="hero-content">
       <h2>Remodels that inspire</h2>
@@ -915,7 +1176,6 @@
       <a href="#contacto" class="btn btn-primary btn-float">Request a quote</a>
     </div>
     <div class="hero-overlay"></div>
-    
   </section>
 
   <!-- NUEVA SECCIÓN: Redes Sociales Destacadas - SIMPLIFICADA -->
@@ -974,7 +1234,7 @@
           </ul>
         </div>
 
-        <!-- Drywall/Stucco Repairs & Texture - CON NUEVO ICONO -->
+        <!-- Drywall/Stucco Repairs & Texture -->
         <div class="service-card" data-service="drywall">
           <div class="service-icon"><i class="fas fa-hard-hat"></i></div>
           <h3>Drywall/Stucco Repairs & Texture</h3>
@@ -1055,7 +1315,6 @@
     <button class="carousel-nav carousel-prev" id="carouselPrev"><i class="fas fa-chevron-left"></i></button>
     <button class="carousel-nav carousel-next" id="carouselNext"><i class="fas fa-chevron-right"></i></button>
     
-    <!-- Áreas táctiles para navegación en móvil -->
     <div class="carousel-touch-area carousel-touch-prev" id="touchPrev"></div>
     <div class="carousel-touch-area carousel-touch-next" id="touchNext"></div>
     
@@ -1094,12 +1353,9 @@
           personality and lifestyle.</p>
 
         <div class="stats">
-          <div class="stat-item">
-          </div>
-          <div class="stat-item">
-          </div>
-          <div class="stat-item">
-          </div>
+          <div class="stat-item"></div>
+          <div class="stat-item"></div>
+          <div class="stat-item"></div>
         </div>
       </div>
     </div>
@@ -1111,19 +1367,17 @@
       <div class="contact-container">
         <div class="contact-info">
           <h3>Contact information</h3>
-
           <p><i class="fas fa-phone"></i> +1 602 741 6927</p>
           <p><i class="fas fa-envelope"></i> azstateremodeling@gmail.com</p>
-        <div class="social-links">
-          <a href="https://wa.me/+16027416927" target="_blank"><i class="fab fa-whatsapp"></i></a>
-          <a href="https://www.instagram.com/azstateremodeling" target="_blank"><i class="fab fa-instagram"></i></a>
-          <a href="https://www.tiktok.com/@azstateremodeling" target="_blank"><i class="fab fa-tiktok"></i></a>
-        </div>
+          <div class="social-links">
+            <a href="https://wa.me/+16027416927" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.instagram.com/azstateremodeling" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/@azstateremodeling" target="_blank"><i class="fab fa-tiktok"></i></a>
+          </div>
         </div>
         <form class="contact-form" action="https://formsubmit.co/victor@azstateremodeling.com" method="POST">
           <input type="hidden" name="_next" value="http://127.0.0.1:5500/index.html">
           <input type="hidden" name="_captcha" value="false">
-
           <div class="form-group">
             <input type="text" name="name" placeholder="Full name" required>
           </div>
@@ -1142,10 +1396,15 @@
     </div>
   </section>
 
-  <!-- SECCIÓN DE RESEÑAS EN CARRUSEL -->
+  <!-- SECCIÓN DE RESEÑAS CON AUTENTICACIÓN LOCAL -->
   <section id="resenas" class="reviews">
     <div class="container">
       <h2 class="section-title">Customer <span>Reviews</span></h2>
+      
+      <!-- SECCIÓN DE AUTENTICACIÓN -->
+      <div class="auth-section" id="authSection">
+        <!-- Esto se llenará dinámicamente con JavaScript -->
+      </div>
       
       <!-- Carrusel de reseñas -->
       <div class="reviews-carousel-container">
@@ -1163,9 +1422,9 @@
       <!-- Indicadores del carrusel -->
       <div class="carousel-indicators" id="carouselIndicators"></div>
 
-      <!-- Botón para mostrar formulario -->
-      <div class="reviews-cta">
-        <button class="btn" id="showReviewFormBtn">Write a Review</button>
+      <!-- Botón para mostrar formulario (solo si está autenticado) -->
+      <div class="reviews-cta" id="reviewCTA">
+        <!-- Esto se llenará dinámicamente -->
       </div>
 
       <!-- Formulario de nueva reseña (oculto inicialmente) -->
@@ -1178,10 +1437,6 @@
         </div>
 
         <form class="review-form" id="reviewForm">
-          <div class="form-group">
-            <input type="text" id="reviewerName" placeholder="Your Name" required>
-          </div>
-          
           <div class="form-group">
             <select id="reviewService" required>
               <option value="">Select Service</option>
@@ -1212,11 +1467,42 @@
             <textarea id="reviewText" placeholder="Tell us about your experience..." required></textarea>
           </div>
 
-          <button type="submit" class="btn-submit-review">Submit Review</button>
+          <button type="submit" class="btn-submit-review" id="submitReviewBtn">Submit Review</button>
         </form>
       </div>
     </div>
   </section>
+
+  <!-- MODAL DE LOGIN LOCAL (SOLO EMAIL Y TELÉFONO) -->
+  <div class="login-modal" id="loginModal">
+    <div class="login-container">
+      <h3>Sign in to write a review</h3>
+      <p>Choose how you want to identify yourself</p>
+      
+      <div class="login-options">
+        <div class="login-option" onclick="showLoginForm('email')">
+          <i class="fas fa-envelope"></i>
+          <span>Sign in with Email</span>
+        </div>
+        <div class="login-option" onclick="showLoginForm('phone')">
+          <i class="fas fa-mobile-alt"></i>
+          <span>Sign in with Phone</span>
+        </div>
+      </div>
+      
+      <div class="login-form" id="emailForm">
+        <input type="email" id="loginEmail" placeholder="Email address">
+        <button onclick="loginWithEmail()">Continue with Email</button>
+      </div>
+      
+      <div class="login-form" id="phoneForm">
+        <input type="tel" id="loginPhone" placeholder="Phone number">
+        <button onclick="loginWithPhone()">Continue with Phone</button>
+      </div>
+      
+      <div class="login-close" onclick="closeLoginModal()">Close</div>
+    </div>
+  </div>
 
   <footer class="footer">
     <div class="container">
@@ -1247,16 +1533,12 @@
         </div>
       </div>
       <div class="floating-buttons">
-        <!-- WhatsApp -->
         <a href="https://wa.me/+16027416927" target="_blank" class="float-btn whatsapp">
           <i class="fab fa-whatsapp"></i>
         </a>
-      
-        <!-- Llamada -->
         <a href="tel:+16027416927" class="float-btn call">
           <i class="fas fa-phone"></i>
         </a>        
-        <!-- Mensaje (puede ser SMS o al formulario) -->
         <a href="sms:+16027416927" class="float-btn message">
           <i class="fas fa-comment-dots"></i>
         </a>
@@ -1268,121 +1550,69 @@
     // Datos de imágenes para cada servicio y subcategoría
     const serviceImages = {
       flooring: {
-        carpet: [
-          "img/carpet1.jpg", "img/carpet2.jpg", "img/carpet3.jpg", "img/carpet4.jpg", "img/carpet5.jpg"
-        ],
-        tile: [
-          "img/Tale1.jpg", "img/Tale2.jpg", "img/tile3.jpg", "img/tile4.jpg", "img/tile5.jpg"
-        ],
-        vinyl: [
-          "img/v0.jpeg", "img/v1.jpeg", "img/v3.jpeg", "img/v4.jpeg", "img/v5.jpeg", 
-          "img/v6.jpeg", "img/v7.jpeg", "img/vv8.jpeg", "img/v9.jpeg", "img/v10.jpeg", 
-          "img/v11.jpeg", "img/v12.jpeg", "img/v13.jpeg", "img/v14.jpeg"
-        ]
+        carpet: ["img/carpet1.jpg", "img/carpet2.jpg", "img/carpet3.jpg", "img/carpet4.jpg", "img/carpet5.jpg"],
+        tile: ["img/Tale1.jpg", "img/Tale2.jpg", "img/tile3.jpg", "img/tile4.jpg", "img/tile5.jpg"],
+        vinyl: ["img/v0.jpeg", "img/v1.jpeg", "img/v3.jpeg", "img/v4.jpeg", "img/v5.jpeg", 
+                "img/v6.jpeg", "img/v7.jpeg", "img/vv8.jpeg", "img/v9.jpeg", "img/v10.jpeg", 
+                "img/v11.jpeg", "img/v12.jpeg", "img/v13.jpeg", "img/v14.jpeg"]
       },
       painting: {
-        interior: [
-          "img/interior1.jpg", "img/interior2.jpg", "img/interior3.jpg", "img/interior4.jpg"
-        ],
-        exterior: [
-          "img/Pergola1.jpg", "img/Pergola2.jpg", "img/Pergola3.jpg", "img/Pergola4.jpg"
-        ]
+        interior: ["img/interior1.jpg", "img/interior2.jpg", "img/interior3.jpg", "img/interior4.jpg"],
+        exterior: ["img/Pergola1.jpg", "img/Pergola2.jpg", "img/Pergola3.jpg", "img/Pergola4.jpg"]
       },
       drywall: {
-        "drywall-repairs": [
-          "img/ra1.jpg", "img/ra2.jpg", "img/ra3.jpg", "img/ra4.jpg", "img/ra5.jpg",
-          "img/ra6.jpg", "img/ra7.jpg", "img/ra8.jpg", "img/ra9.jpg", "img/ra10.jpg"
-        ],
-        "stucco-repairs": [
-          "img/stucco.jpeg", "img/stucco10.jpeg", "img/stucco20.jpeg", "img/stucco30.jpeg", "img/stucco40.jpeg"
-        ],
-        "texture-application": [
-          "img/tex.jpeg", "img/tex0.jpeg", "img/tex1.jpeg", "img/tex2.jpeg"
-        ]
+        "drywall-repairs": ["img/ra1.jpg", "img/ra2.jpg", "img/ra3.jpg", "img/ra4.jpg", "img/ra5.jpg",
+                           "img/ra6.jpg", "img/ra7.jpg", "img/ra8.jpg", "img/ra9.jpg", "img/ra10.jpg"],
+        "stucco-repairs": ["img/stucco.jpeg", "img/stucco10.jpeg", "img/stucco20.jpeg", "img/stucco30.jpeg", "img/stucco40.jpeg"],
+        "texture-application": ["img/tex.jpeg", "img/tex0.jpeg", "img/tex1.jpeg", "img/tex2.jpeg"]
       },
       bathroom: {
-        accessories: [
-          "img/accessories1.jpg", "img/accessories2.jpg", "img/accessories3.jpg"
-        ],
-        "glass-doors": [
-          "img/Regadera1.jpg", "img/Regadera2.jpg", "img/Regadera3.jpg", "img/Regadera4.jpg"
-        ],
-        plumbing: [
-          "img/plumbing1.jpg", "img/plumbing2.jpg", "img/plumbing3.jpg"
-        ],
-        vanitys: [
-          "img/b0.jpeg", "img/b1.jpeg", "img/b2.jpeg", "img/b3.jpeg", "img/b4.jpeg"
-        ],
-        "walls-flooring": [
-          "img/b5.jpeg", "img/b6.jpeg", "img/b8.jpeg", "img/b9.jpeg", "img/b10.jpeg", 
-          "img/b11.jpeg", "img/b12.jpeg", "img/b13.jpeg"
-        ]
+        accessories: ["img/accessories1.jpg", "img/accessories2.jpg", "img/accessories3.jpg"],
+        "glass-doors": ["img/Regadera1.jpg", "img/Regadera2.jpg", "img/Regadera3.jpg", "img/Regadera4.jpg"],
+        plumbing: ["img/plumbing1.jpg", "img/plumbing2.jpg", "img/plumbing3.jpg"],
+        vanitys: ["img/b0.jpeg", "img/b1.jpeg", "img/b2.jpeg", "img/b3.jpeg", "img/b4.jpeg"],
+        "walls-flooring": ["img/b5.jpeg", "img/b6.jpeg", "img/b8.jpeg", "img/b9.jpeg", "img/b10.jpeg", 
+                          "img/b11.jpeg", "img/b12.jpeg", "img/b13.jpeg"]
       },
       kitchen: {
-        backsplash: [
-          "img/backsplash1.jpg", "img/backsplash2.jpg", "img/backsplash3.jpg"
-        ],
-        cabinets: [
-          "img/wood1.jpg", "img/wood2.jpg", "img/wood3.jpg", "img/wood4.jpg", "img/wood5.jpg"
-        ],
-        countertops: [
-          "img/countertop1.jpg", "img/countertop2.jpg", "img/countertop3.jpg"
-        ],
-        "range-hoods": [
-          "img/rangehood1.jpg", "img/rangehood2.jpg", "img/rangehood3.jpg"
-        ],
-        sink: [
-          "img/sink1.jpg", "img/sink2.jpg", "img/sink3.jpg"
-        ]
+        backsplash: ["img/backsplash1.jpg", "img/backsplash2.jpg", "img/backsplash3.jpg"],
+        cabinets: ["img/wood1.jpg", "img/wood2.jpg", "img/wood3.jpg", "img/wood4.jpg", "img/wood5.jpg"],
+        countertops: ["img/countertop1.jpg", "img/countertop2.jpg", "img/countertop3.jpg"],
+        "range-hoods": ["img/rangehood1.jpg", "img/rangehood2.jpg", "img/rangehood3.jpg"],
+        sink: ["img/sink1.jpg", "img/sink2.jpg", "img/sink3.jpg"]
       },
       cabinets: {
-        "custom-design": [
-          "img/custom1.jpg", "img/custom2.jpg", "img/custom3.jpg", "img/custom4.jpg", "img/custom5.jpg"
-        ],
-        "professional-installation": [
-          "img/installation1.jpg", "img/installation2.jpg", "img/installation3.jpg", "img/installation4.jpg"
-        ],
-        "various-materials": [
-          "img/materials1.jpg", "img/materials2.jpg", "img/materials3.jpg", "img/materials4.jpg"
-        ]
+        "custom-design": ["img/custom1.jpg", "img/custom2.jpg", "img/custom3.jpg", "img/custom4.jpg", "img/custom5.jpg"],
+        "professional-installation": ["img/installation1.jpg", "img/installation2.jpg", "img/installation3.jpg", "img/installation4.jpg"],
+        "various-materials": ["img/materials1.jpg", "img/materials2.jpg", "img/materials3.jpg", "img/materials4.jpg"]
       },
       trim: {
-        baseboard: [
-          "img/baseboard1.jpg", "img/baseboard2.jpg", "img/baseboard3.jpg", "img/baseboard4.jpg"
-        ],
-        "crown-molding": [
-          "img/crown1.jpg", "img/crown2.jpg", "img/crown3.jpg", "img/crown4.jpg"
-        ],
-        doors: [
-          "img/Framing1.jpg", "img/Framing2.jpg", "img/Framing3.jpg", "img/Framing4.jpg",
-          "img/doors1.jpg", "img/doors2.jpg", "img/doors3.jpg"
-        ]
+        baseboard: ["img/baseboard1.jpg", "img/baseboard2.jpg", "img/baseboard3.jpg", "img/baseboard4.jpg"],
+        "crown-molding": ["img/crown1.jpg", "img/crown2.jpg", "img/crown3.jpg", "img/crown4.jpg"],
+        doors: ["img/Framing1.jpg", "img/Framing2.jpg", "img/Framing3.jpg", "img/Framing4.jpg",
+                "img/doors1.jpg", "img/doors2.jpg", "img/doors3.jpg"]
       },
       hardscape: {
-        concrete: [
-          "img/concrete1.jpg", "img/concrete2.jpg", "img/concrete3.jpg", "img/concrete4.jpg"
-        ],
-        "irrigation-systems": [
-          "img/irrigation1.jpg", "img/irrigation2.jpg", "img/irrigation3.jpg", "img/irrigation4.jpg"
-        ],
-        "synthetic-grass": [
-          "img/grass1.jpg", "img/grass2.jpg", "img/grass3.jpg", "img/grass4.jpg"
-        ],
-        "pavers-installation": [
-          "img/Pave1.jpg", "img/Pave2.jpg", "img/Pave3.jpg", "img/Pave4.jpg", "img/Pave5.jpg"
-        ],
-        "tree-planting": [
-          "img/tree1.jpg", "img/tree2.jpg", "img/tree3.jpg", "img/tree4.jpg"
-        ]
+        concrete: ["img/concrete1.jpg", "img/concrete2.jpg", "img/concrete3.jpg", "img/concrete4.jpg"],
+        "irrigation-systems": ["img/irrigation1.jpg", "img/irrigation2.jpg", "img/irrigation3.jpg", "img/irrigation4.jpg"],
+        "synthetic-grass": ["img/grass1.jpg", "img/grass2.jpg", "img/grass3.jpg", "img/grass4.jpg"],
+        "pavers-installation": ["img/Pave1.jpg", "img/Pave2.jpg", "img/Pave3.jpg", "img/Pave4.jpg", "img/Pave5.jpg"],
+        "tree-planting": ["img/tree1.jpg", "img/tree2.jpg", "img/tree3.jpg", "img/tree4.jpg"]
       }
     };
 
-    // Sistema de reseñas en carrusel
+    // Sistema de reseñas con autenticación local (solo email y teléfono)
     document.addEventListener('DOMContentLoaded', function() {
+      // Estado del usuario actual
+      let currentUser = JSON.parse(localStorage.getItem('currentUser')) || null;
+      
       // Cargar reseñas guardadas o usar reseñas de ejemplo
       let reviews = JSON.parse(localStorage.getItem('reviews')) || [
         {
           name: 'Michael Thompson',
+          userId: 'email_1',
+          email: 'michael.t@example.com',
+          loginMethod: 'email',
           date: 'February 15, 2025',
           rating: 5,
           text: 'Excellent work on our kitchen remodel! The team was professional, punctual, and completed the project ahead of schedule. The quality of the cabinets and countertops is outstanding. Highly recommend AZ State Remodeling!',
@@ -1390,13 +1620,19 @@
         },
         {
           name: 'Sarah Martinez',
+          userId: 'email_2',
+          email: 'sarah.m@example.com',
+          loginMethod: 'email',
           date: 'January 28, 2025',
           rating: 5,
           text: 'Amazing transformation of our master bathroom! From the tile work to the glass doors, every detail was perfect. The team was clean, respectful, and communicated well throughout the entire process. Will definitely use them again!',
           service: 'Bathroom Remodel'
         },
         {
-          name: 'David & Lisa Chen',
+          name: 'David Chen',
+          userId: 'email_3',
+          email: 'david.c@example.com',
+          loginMethod: 'email',
           date: 'January 10, 2025',
           rating: 5,
           text: 'We had our entire house flooring replaced with vinyl planks and tile. The installation was flawless and the team paid attention to every detail. They even helped us choose the perfect materials. Very satisfied customers!',
@@ -1404,6 +1640,9 @@
         },
         {
           name: 'Robert Wilson',
+          userId: 'phone_1',
+          phone: '602-555-0123',
+          loginMethod: 'phone',
           date: 'December 18, 2024',
           rating: 4.5,
           text: 'Great experience with the exterior painting and stucco repairs. The team was very professional and the quality of work exceeded our expectations. They cleaned up everything daily and finished on time. Would hire again!',
@@ -1411,6 +1650,9 @@
         },
         {
           name: 'Jennifer Adams',
+          userId: 'email_4',
+          email: 'jennifer.a@example.com',
+          loginMethod: 'email',
           date: 'December 5, 2024',
           rating: 5,
           text: 'The hardscape work in our backyard is amazing! The pavers installation and synthetic grass look beautiful. The team was creative with the design and executed it perfectly. Our backyard feels like a resort now!',
@@ -1418,6 +1660,9 @@
         },
         {
           name: 'Carlos Rodriguez',
+          userId: 'phone_2',
+          phone: '602-555-0456',
+          loginMethod: 'phone',
           date: 'November 20, 2024',
           rating: 5,
           text: 'Custom cabinets installation was perfect. They designed exactly what we wanted and the craftsmanship is top-notch. The team was very professional and the price was very reasonable. Highly recommended!',
@@ -1425,11 +1670,20 @@
         }
       ];
 
+      // Variables del carrusel
       let currentIndex = 0;
       const track = document.getElementById('reviewsTrack');
       const prevBtn = document.getElementById('reviewPrevBtn');
       const nextBtn = document.getElementById('reviewNextBtn');
       const indicatorsContainer = document.getElementById('carouselIndicators');
+      const authSection = document.getElementById('authSection');
+      const reviewCTA = document.getElementById('reviewCTA');
+      const reviewFormContainer = document.getElementById('reviewFormContainer');
+
+      // Función para obtener iniciales del nombre
+      function getInitials(name) {
+        return name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
+      }
 
       // Función para renderizar estrellas
       function renderStars(rating) {
@@ -1461,11 +1715,20 @@
           const reviewCard = document.createElement('div');
           reviewCard.className = 'review-card';
           
+          const initials = getInitials(review.name);
+          const displayId = review.email || review.phone || 'Verified User';
+          
           reviewCard.innerHTML = `
             <div class="review-header">
               <div class="reviewer-info">
-                <h4>${review.name}</h4>
-                <div class="review-date">${review.date}</div>
+                <div class="reviewer-avatar">${initials}</div>
+                <div>
+                  <h4>
+                    ${review.name}
+                    <span class="verified-badge"><i class="fas fa-check-circle"></i> Verified</span>
+                  </h4>
+                  <div class="review-date">${review.date}</div>
+                </div>
               </div>
               <div class="review-rating">
                 ${renderStars(review.rating)}
@@ -1484,17 +1747,154 @@
         updateCarouselPosition();
       }
 
+      // Función para mostrar la interfaz de autenticación
+      function updateAuthUI() {
+        if (currentUser) {
+          // Usuario autenticado
+          const initials = getInitials(currentUser.name);
+          const displayInfo = currentUser.email || currentUser.phone || '';
+          
+          authSection.innerHTML = `
+            <div class="user-info">
+              <div class="user-details">
+                <div class="user-avatar">${initials}</div>
+                <span>${currentUser.name}</span>
+              </div>
+              <button class="btn-logout" id="logoutBtn">Sign Out</button>
+            </div>
+          `;
+          
+          reviewCTA.innerHTML = `
+            <button class="btn" id="showReviewFormBtn">Write a Review</button>
+          `;
+          
+          document.getElementById('logoutBtn').addEventListener('click', logout);
+          
+          document.getElementById('showReviewFormBtn').addEventListener('click', () => {
+            if (reviewFormContainer.style.display === 'none') {
+              reviewFormContainer.style.display = 'block';
+              document.getElementById('showReviewFormBtn').textContent = 'Hide Form';
+            } else {
+              reviewFormContainer.style.display = 'none';
+              document.getElementById('showReviewFormBtn').textContent = 'Write a Review';
+            }
+          });
+          
+        } else {
+          // Usuario no autenticado
+          authSection.innerHTML = `
+            <button class="btn-login" id="showLoginBtn">
+              <i class="fas fa-sign-in-alt"></i>
+              Sign in to write a review
+            </button>
+          `;
+          
+          reviewCTA.innerHTML = `
+            <button class="btn" disabled>Sign in to write a review</button>
+          `;
+          
+          reviewFormContainer.style.display = 'none';
+          
+          document.getElementById('showLoginBtn').addEventListener('click', () => {
+            document.getElementById('loginModal').classList.add('active');
+          });
+        }
+      }
+
+      // Función de login con email
+      window.loginWithEmail = function() {
+        const email = document.getElementById('loginEmail').value;
+        if (!email) {
+          alert('Please enter an email address');
+          return;
+        }
+        
+        if (!email.includes('@') || !email.includes('.')) {
+          alert('Please enter a valid email address');
+          return;
+        }
+        
+        const name = email.split('@')[0].replace(/[._-]/g, ' ');
+        
+        currentUser = {
+          id: 'email_' + Date.now(),
+          name: name.charAt(0).toUpperCase() + name.slice(1),
+          email: email,
+          loginMethod: 'email'
+        };
+        
+        localStorage.setItem('currentUser', JSON.stringify(currentUser));
+        closeLoginModal();
+        updateAuthUI();
+      };
+
+      // Función de login con teléfono
+      window.loginWithPhone = function() {
+        const phone = document.getElementById('loginPhone').value;
+        if (!phone) {
+          alert('Please enter a phone number');
+          return;
+        }
+        
+        // Limpiar el número de teléfono
+        const cleanPhone = phone.replace(/\D/g, '');
+        if (cleanPhone.length < 10) {
+          alert('Please enter a valid phone number (at least 10 digits)');
+          return;
+        }
+        
+        // Formatear nombre desde teléfono
+        const lastFour = cleanPhone.slice(-4);
+        
+        currentUser = {
+          id: 'phone_' + Date.now(),
+          name: 'User ' + lastFour,
+          phone: phone,
+          loginMethod: 'phone'
+        };
+        
+        localStorage.setItem('currentUser', JSON.stringify(currentUser));
+        closeLoginModal();
+        updateAuthUI();
+      };
+
+      // Función de logout
+      function logout() {
+        currentUser = null;
+        localStorage.removeItem('currentUser');
+        updateAuthUI();
+      }
+
+      // Función para mostrar formularios de login
+      window.showLoginForm = function(type) {
+        document.querySelectorAll('.login-form').forEach(form => {
+          form.classList.remove('active');
+        });
+        document.getElementById(type + 'Form').classList.add('active');
+      };
+
+      // Función para cerrar modal
+      window.closeLoginModal = function() {
+        document.getElementById('loginModal').classList.remove('active');
+        document.querySelectorAll('.login-form').forEach(form => {
+          form.classList.remove('active');
+        });
+        // Limpiar inputs
+        document.getElementById('loginEmail').value = '';
+        document.getElementById('loginPhone').value = '';
+      };
+
       // Actualizar posición del carrusel
       function updateCarouselPosition() {
         const cardWidth = track.children[0]?.offsetWidth || 0;
-        const gap = 30; // El gap definido en CSS
+        const gap = 30;
         const scrollAmount = (cardWidth + gap) * currentIndex;
         track.style.transform = `translateX(-${scrollAmount}px)`;
       }
 
       // Actualizar indicadores
       function updateIndicators() {
-        const totalSlides = Math.ceil(reviews.length / 3); // 3 reseñas por slide en desktop
+        const totalSlides = Math.ceil(reviews.length / 3);
         indicatorsContainer.innerHTML = '';
         
         for (let i = 0; i < totalSlides; i++) {
@@ -1509,7 +1909,7 @@
         }
       }
 
-      // Event listeners para navegación
+      // Event listeners para navegación del carrusel
       prevBtn.addEventListener('click', () => {
         if (currentIndex > 0) {
           currentIndex--;
@@ -1560,28 +1960,19 @@
         });
       }
 
-      // Mostrar/ocultar formulario
-      const showFormBtn = document.getElementById('showReviewFormBtn');
-      const formContainer = document.getElementById('reviewFormContainer');
-      
-      showFormBtn.addEventListener('click', function() {
-        if (formContainer.style.display === 'none') {
-          formContainer.style.display = 'block';
-          showFormBtn.textContent = 'Hide Form';
-        } else {
-          formContainer.style.display = 'none';
-          showFormBtn.textContent = 'Write a Review';
-        }
-      });
-
       // Manejar envío del formulario
       const reviewForm = document.getElementById('reviewForm');
       const successMessage = document.getElementById('successMessage');
+      const submitBtn = document.getElementById('submitReviewBtn');
       
       reviewForm.addEventListener('submit', function(e) {
         e.preventDefault();
         
-        const name = document.getElementById('reviewerName').value;
+        if (!currentUser) {
+          alert('Please sign in to submit a review');
+          return;
+        }
+        
         const service = document.getElementById('reviewService').value;
         const rating = parseFloat(document.getElementById('reviewRating').value);
         const text = document.getElementById('reviewText').value;
@@ -1591,10 +1982,18 @@
           return;
         }
         
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Submitting...';
+        
         const today = new Date();
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        
         const newReview = {
-          name: name,
+          name: currentUser.name,
+          userId: currentUser.id,
+          ...(currentUser.email && { email: currentUser.email }),
+          ...(currentUser.phone && { phone: currentUser.phone }),
+          loginMethod: currentUser.loginMethod,
           date: today.toLocaleDateString('en-US', options),
           rating: rating,
           text: text,
@@ -1608,19 +2007,26 @@
         
         successMessage.classList.add('show');
         
-        document.getElementById('reviewerName').value = '';
         document.getElementById('reviewService').value = '';
         document.getElementById('reviewText').value = '';
         document.getElementById('reviewRating').value = '0';
         highlightStars(0);
         
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Submit Review';
+        
         setTimeout(() => {
           successMessage.classList.remove('show');
         }, 3000);
+        
+        // Opcional: cerrar el formulario
+        // reviewFormContainer.style.display = 'none';
+        // document.getElementById('showReviewFormBtn').textContent = 'Write a Review';
       });
 
-      // Mostrar reseñas iniciales
+      // Mostrar reseñas iniciales y UI de autenticación
       displayReviews();
+      updateAuthUI();
 
       // Funcionalidad del carrusel de imágenes (código original)
       const modal = document.getElementById('carouselModal');
