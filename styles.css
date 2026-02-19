@@ -1,5 +1,5 @@
 :root {
-    --primary-color: #1d5a9b;        /* Azul brillante moderno */
+    --primary-color: #1d5a9b;        /* Azul brillante */
     --secondary-color: #000000;
     --dark-color: #000000;
     --light-color: #F7FFF7;
@@ -1301,4 +1301,5 @@ a {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
   }
   
+
 
