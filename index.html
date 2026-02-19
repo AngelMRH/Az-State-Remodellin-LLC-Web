@@ -621,11 +621,16 @@
     
     .review-rating {
       color: #ffc107;
-      font-size: 0.9rem;
+      font-size: 0.5rem;
+      letter-spacing: -2px;
+      display: flex;
+      gap: 0;
+      white-space: nowrap;
     }
     
     .review-rating i {
-      margin-right: 2px;
+      margin-right: 0;
+      font-size: 0.5rem;
     }
     
     .review-text {
@@ -657,14 +662,14 @@
     .verified-badge {
       display: inline-flex;
       align-items: center;
-      gap: 4px;
-      font-size: 0.75rem;
+      gap: 2px;
+      font-size: 0.55rem;
       color: #34a853;
       margin-left: 5px;
     }
     
     .verified-badge i {
-      font-size: 0.7rem;
+      font-size: 0.5rem;
     }
     
     /* Botones de navegación del carrusel */
@@ -1108,6 +1113,14 @@
       .login-container {
         padding: 20px;
       }
+      
+      .review-rating {
+        font-size: 0.45rem;
+      }
+      
+      .review-rating i {
+        font-size: 0.45rem;
+      }
     }
     
     @media (max-width: 480px) {
@@ -1135,6 +1148,14 @@
         width: 35px;
         height: 35px;
         font-size: 1rem;
+      }
+      
+      .review-rating {
+        font-size: 0.4rem;
+      }
+      
+      .review-rating i {
+        font-size: 0.4rem;
       }
     }
   </style>
@@ -1601,70 +1622,58 @@
       }
     };
 
-    // Sistema de reseñas con autenticación local (solo email y teléfono)
+    // Sistema de reseñas con autenticación local
     document.addEventListener('DOMContentLoaded', function() {
       // Estado del usuario actual
       let currentUser = JSON.parse(localStorage.getItem('currentUser')) || null;
       
-      // Cargar reseñas guardadas o usar reseñas de ejemplo
+      // Cargar reseñas guardadas o usar reseñas de ejemplo - TODAS CON rating
       let reviews = JSON.parse(localStorage.getItem('reviews')) || [
         {
           name: 'Michael Thompson',
           userId: 'email_1',
-          email: 'michael.t@example.com',
-          loginMethod: 'email',
-          date: 'February 15, 2025',
           rating: 5,
+          date: 'February 15, 2025',
           text: 'Excellent work on our kitchen remodel! The team was professional, punctual, and completed the project ahead of schedule. The quality of the cabinets and countertops is outstanding. Highly recommend AZ State Remodeling!',
           service: 'Kitchen Remodel'
         },
         {
           name: 'Sarah Martinez',
           userId: 'email_2',
-          email: 'sarah.m@example.com',
-          loginMethod: 'email',
-          date: 'January 28, 2025',
           rating: 5,
+          date: 'January 28, 2025',
           text: 'Amazing transformation of our master bathroom! From the tile work to the glass doors, every detail was perfect. The team was clean, respectful, and communicated well throughout the entire process. Will definitely use them again!',
           service: 'Bathroom Remodel'
         },
         {
           name: 'David Chen',
           userId: 'email_3',
-          email: 'david.c@example.com',
-          loginMethod: 'email',
-          date: 'January 10, 2025',
           rating: 5,
+          date: 'January 10, 2025',
           text: 'We had our entire house flooring replaced with vinyl planks and tile. The installation was flawless and the team paid attention to every detail. They even helped us choose the perfect materials. Very satisfied customers!',
           service: 'Flooring'
         },
         {
           name: 'Robert Wilson',
           userId: 'phone_1',
-          phone: '602-555-0123',
-          loginMethod: 'phone',
-          date: 'December 18, 2024',
           rating: 4.5,
+          date: 'December 18, 2024',
           text: 'Great experience with the exterior painting and stucco repairs. The team was very professional and the quality of work exceeded our expectations. They cleaned up everything daily and finished on time. Would hire again!',
           service: 'Painting & Stucco'
         },
         {
           name: 'Jennifer Adams',
           userId: 'email_4',
-          email: 'jennifer.a@example.com',
-          loginMethod: 'email',
-          date: 'December 5, 2024',
           rating: 5,
+          date: 'December 5, 2024',
           text: 'The hardscape work in our backyard is amazing! The pavers installation and synthetic grass look beautiful. The team was creative with the design and executed it perfectly. Our backyard feels like a resort now!',
           service: 'Hardscape'
         },
         {
           name: 'Carlos Rodriguez',
           userId: 'phone_2',
-          phone: '602-555-0456',
-          loginMethod: 'phone',
-          date: 'November 20, 2024',
           rating: 5,
+          date: 'November 20, 2024',
           text: 'Custom cabinets installation was perfect. They designed exactly what we wanted and the craftsmanship is top-notch. The team was very professional and the price was very reasonable. Highly recommended!',
           service: 'Custom Cabinets'
         }
@@ -1685,8 +1694,10 @@
         return name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
       }
 
-      // Función para renderizar estrellas
+      // Función para renderizar estrellas (extremadamente pequeñas y juntas)
       function renderStars(rating) {
+        if (!rating) return ''; // Si no hay rating, no mostrar nada
+        
         let stars = '';
         const fullStars = Math.floor(rating);
         const hasHalfStar = rating % 1 !== 0;
@@ -1716,7 +1727,6 @@
           reviewCard.className = 'review-card';
           
           const initials = getInitials(review.name);
-          const displayId = review.email || review.phone || 'Verified User';
           
           reviewCard.innerHTML = `
             <div class="review-header">
@@ -1750,9 +1760,7 @@
       // Función para mostrar la interfaz de autenticación
       function updateAuthUI() {
         if (currentUser) {
-          // Usuario autenticado
           const initials = getInitials(currentUser.name);
-          const displayInfo = currentUser.email || currentUser.phone || '';
           
           authSection.innerHTML = `
             <div class="user-info">
@@ -1781,7 +1789,6 @@
           });
           
         } else {
-          // Usuario no autenticado
           authSection.innerHTML = `
             <button class="btn-login" id="showLoginBtn">
               <i class="fas fa-sign-in-alt"></i>
@@ -1836,14 +1843,12 @@
           return;
         }
         
-        // Limpiar el número de teléfono
         const cleanPhone = phone.replace(/\D/g, '');
         if (cleanPhone.length < 10) {
           alert('Please enter a valid phone number (at least 10 digits)');
           return;
         }
         
-        // Formatear nombre desde teléfono
         const lastFour = cleanPhone.slice(-4);
         
         currentUser = {
@@ -1879,7 +1884,6 @@
         document.querySelectorAll('.login-form').forEach(form => {
           form.classList.remove('active');
         });
-        // Limpiar inputs
         document.getElementById('loginEmail').value = '';
         document.getElementById('loginPhone').value = '';
       };
@@ -1991,11 +1995,8 @@
         const newReview = {
           name: currentUser.name,
           userId: currentUser.id,
-          ...(currentUser.email && { email: currentUser.email }),
-          ...(currentUser.phone && { phone: currentUser.phone }),
-          loginMethod: currentUser.loginMethod,
-          date: today.toLocaleDateString('en-US', options),
           rating: rating,
+          date: today.toLocaleDateString('en-US', options),
           text: text,
           service: service
         };
@@ -2018,10 +2019,6 @@
         setTimeout(() => {
           successMessage.classList.remove('show');
         }, 3000);
-        
-        // Opcional: cerrar el formulario
-        // reviewFormContainer.style.display = 'none';
-        // document.getElementById('showReviewFormBtn').textContent = 'Write a Review';
       });
 
       // Mostrar reseñas iniciales y UI de autenticación
