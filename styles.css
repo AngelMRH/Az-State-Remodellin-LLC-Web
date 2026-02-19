@@ -814,7 +814,7 @@ a {
     align-items: center;
 }
 
-/* Redes sociales estilizadas en negro */
+/* Redes sociales en negro */
 .social-links {
     display: flex;
     gap: 15px;
@@ -1301,5 +1301,6 @@ a {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
   }
   
+
 
 
