@@ -55,7 +55,7 @@ body {
   .nav ul {
     position: fixed;
     top: 70px;
-    left: -100%; /* OCULTO por defecto */
+    left: -100%;
     width: 100%;
     height: calc(100vh - 70px);
     background-color: white;
@@ -1301,6 +1301,7 @@ a {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
   }
   
+
 
 
 
