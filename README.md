@@ -69,6 +69,3 @@ Sitio web profesional para **AZ State Remodeling LLC**, una empresa de remodelac
 - **Google Fonts** - Tipografía Poppins
 - **LocalStorage** - Persistencia de datos (sin backend)
 
----
-
-## 📁 **Estructura del Proyecto**
