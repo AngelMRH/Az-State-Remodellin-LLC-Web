@@ -1,10 +1,5 @@
 # AZ State Remodeling LLC - Sitio Web Corporativo
 
-## 📋 Descripción del Proyecto
-
-Sitio web profesional para **AZ State Remodeling LLC**, una empresa de remodelación con licencia en Arizona. El sitio muestra los servicios de la empresa, permite a los clientes ver proyectos anteriores a través de un carrusel de imágenes, y cuenta con un sistema de reseñas con autenticación local.
----
-
 ## ✨ Características Principales
 
 ### 🏠 **Página Principal**
