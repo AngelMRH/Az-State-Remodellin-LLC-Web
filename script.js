@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // FILTRADO DE PROYECTOS (HTML manual, no dinámico)
+    
     const filterButtons = document.querySelectorAll('.filter-btn');
     const projectCarousels = document.querySelectorAll('.project-carousel');
 
@@ -222,3 +222,4 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+
