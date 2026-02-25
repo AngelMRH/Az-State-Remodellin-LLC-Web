@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', function () {
             e.preventDefault();
             const targetFilter = this.getAttribute('data-service');
 
-            // Simula clic en el botón de filtro
+            
             const filterButton = document.querySelector(`.filter-btn[data-filter="${targetFilter}"]`);
             if (filterButton) filterButton.click();
 
@@ -222,4 +222,5 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+
 
