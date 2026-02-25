@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
             }
 
-            // Resalta el carrusel seleccionado
+          
             document.querySelectorAll('.project-carousel').forEach(c => c.classList.remove('enlarged'));
             const activeCarousel = document.querySelector(`.project-carousel.${targetFilter}`);
             if (activeCarousel) {
@@ -222,5 +222,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+
 
 
