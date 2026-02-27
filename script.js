@@ -75,6 +75,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
     });
+
     const serviceLinks = document.querySelectorAll('.service-link');
 
     serviceLinks.forEach(link => {
@@ -85,8 +86,6 @@ document.addEventListener('DOMContentLoaded', function () {
             
             const filterButton = document.querySelector(`.filter-btn[data-filter="${targetFilter}"]`);
             if (filterButton) filterButton.click();
-
-            // Scroll a la sección de proyectos
             const projectSection = document.getElementById('proyectos');
             if (projectSection) {
                 window.scrollTo({
