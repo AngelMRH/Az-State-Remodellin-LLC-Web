@@ -60,8 +60,6 @@ document.addEventListener('DOMContentLoaded', function () {
     filterButtons.forEach(button => {
         button.addEventListener('click', function () {
             const filter = this.getAttribute('data-filter');
-
-            // Cambia el estado activo del botón
             filterButtons.forEach(btn => btn.classList.remove('active'));
             this.classList.add('active');
 
