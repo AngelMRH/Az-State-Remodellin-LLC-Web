@@ -62,8 +62,6 @@ document.addEventListener('DOMContentLoaded', function () {
             const filter = this.getAttribute('data-filter');
             filterButtons.forEach(btn => btn.classList.remove('active'));
             this.classList.add('active');
-
-            // Muestra u oculta los carruseles según filtro
             projectCarousels.forEach(carousel => {
                 carousel.classList.remove('enlarged');
                 if (filter === 'all' || carousel.classList.contains(filter)) {
