@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Mobile Menu Toggle (solo si los elementos existen)
     const menuToggle = document.querySelector('.menu-toggle');
     const nav = document.querySelector('.nav ul');
 
@@ -9,8 +8,6 @@ document.addEventListener('DOMContentLoaded', function () {
             menuToggle.classList.toggle('active');
         });
     }
-
-    // Carruseles individuales automáticos (una imagen cada 4 segundos)
     const allCarousels = document.querySelectorAll('.project-carousel');
 
     allCarousels.forEach(carousel => {
@@ -27,8 +24,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 4000);
     });
 
-
-    // Smooth Scrolling for Navigation Links
     document.querySelectorAll('.nav-link').forEach(link => {
         link.addEventListener('click', function (e) {
             e.preventDefault();
