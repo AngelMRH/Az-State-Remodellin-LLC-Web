@@ -102,8 +102,6 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     });
-
-    // Counter Animation
     const counters = document.querySelectorAll('.counter');
     const speed = 100;
 
