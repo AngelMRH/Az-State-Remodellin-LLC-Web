@@ -164,8 +164,6 @@ document.addEventListener('DOMContentLoaded', function () {
             contactForm.reset();
         });
     }
-
-    // Active link on scroll
     const sections = document.querySelectorAll('section');
     window.addEventListener('scroll', function () {
         let current = '';
@@ -185,6 +183,3 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
-
-
-
