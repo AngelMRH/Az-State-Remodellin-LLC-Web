@@ -75,8 +75,6 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
     });
-
-    // Vincula botones de servicios con carruseles
     const serviceLinks = document.querySelectorAll('.service-link');
 
     serviceLinks.forEach(link => {
