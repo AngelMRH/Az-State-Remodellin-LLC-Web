@@ -10,43 +10,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     // Carruseles individuales automáticos (una imagen cada 4 segundos)
     const allCarousels = document.querySelectorAll('.project-carousel');
 
