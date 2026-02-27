@@ -151,8 +151,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         observer.observe(aboutSection);
     }
-
-    // Form Submission
     const contactForm = document.getElementById('contactForm');
 
     if (contactForm) {
