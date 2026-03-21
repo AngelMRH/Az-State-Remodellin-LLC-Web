@@ -38,7 +38,7 @@
 - **Carrusel de reseñas** con navegación
 - **Formulario interactivo** para nuevas reseñas
 
-### 📱 **Diseño Responsive**
+### 📱 **Diseño Responsivo**
 - Optimizado para móviles, tablets y desktop
 - Menú hamburguesa en dispositivos móviles
 - Carruseles adaptables
