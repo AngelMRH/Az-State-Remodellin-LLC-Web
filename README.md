@@ -1,6 +1,6 @@
 # AZ State Remodeling LLC - Sitio Web Corporativo
 
-## ✨ Características Principales
+## Características Principales
 
 ### 🏠 **Página Principal**
 - Banner animado de "Under Remodeling"
