@@ -51,7 +51,7 @@
 
 ---
 
-## 🛠️ **Tecnologías Utilizadas**
+##  **Tecnologías Utilizadas**
 
 - **HTML5** - Estructura semántica
 - **CSS3** - Estilos personalizados con diseño responsive
