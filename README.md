@@ -2,7 +2,7 @@
 
 ## Características Principales
 
-### 🏠 **Página Principal**
+###  **Página Principal**
 - Banner animado de "Under Remodeling"
 - Hero section con llamado a la acción
 - Sección de redes sociales integrada
